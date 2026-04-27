@@ -1,11 +1,27 @@
-const { defineConfig } = require('eslint/config');
-const expoConfig = require('eslint-config-expo/flat');
-const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
+const { defineConfig } = require("eslint/config");
+const expoConfig = require("eslint-config-expo/flat");
+const unusedImports = require("eslint-plugin-unused-imports");
 
 module.exports = defineConfig([
   expoConfig,
-  eslintPluginPrettierRecommended,
   {
-    ignores: ['dist/*'],
+    ignores: ["dist/*", "android/*", "ios/*", ".expo/*"],
+  },
+  {
+    plugins: {
+      "unused-imports": unusedImports,
+    },
+    rules: {
+      "unused-imports/no-unused-imports": "error",
+      "unused-imports/no-unused-vars": [
+        "warn",
+        {
+          vars: "all",
+          varsIgnorePattern: "^_",
+          args: "after-used",
+          argsIgnorePattern: "^_",
+        },
+      ],
+    },
   },
 ]);

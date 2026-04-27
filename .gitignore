@@ -12,29 +12,25 @@ expo-env.d.ts
 *.p12
 *.key
 *.mobileprovision
+*.pem
 
 .metro-health-check*
 
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+*.log
 
 .DS_Store
-*.pem
-
 .env*.local
-
 *.tsbuildinfo
 
 app-example
-
 /ios
 /android
+/credentials/
 /credentials.json
+/nul
 /CLAUDE.md
-/.claude/settings.local.json
-/.idea/copilot.data.migration.agent.xml
-/.idea/copilot.data.migration.ask.xml
-/.idea/copilot.data.migration.ask2agent.xml
-/.idea/copilot.data.migration.edit.xml
+/.claude/
 /.idea/
