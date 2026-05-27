@@ -1,78 +1,147 @@
-# Repo Stats
+<div align="center">
 
-![GitHub Repo stars](https://img.shields.io/github/stars/Termix-SSH/Mobile?style=flat&label=Stars)
-![GitHub forks](https://img.shields.io/github/forks/Termix-SSH/Mobile?style=flat&label=Forks)
-![GitHub Release](https://img.shields.io/github/v/release/Termix-SSH/Mobile?style=flat&label=Release)
-<a href="https://discord.gg/jVQGdvHDrf"><img alt="Discord" src="https://img.shields.io/discord/1347374268253470720"></a>
+<img src="https://raw.githubusercontent.com/Termix-SSH/Termix/main/public/icon.svg" width="120" height="120" alt="Termix Logo" />
 
-# Overview
+<h1>Termix Mobile</h1>
+
+<p>Full remote SSH control of your servers on iOS and Android</p>
+
+<p>
+  <img src="https://img.shields.io/github/stars/Termix-SSH/Mobile?style=flat&label=Stars&color=F39044&labelColor=1a1a1a" />
+  <img src="https://img.shields.io/github/forks/Termix-SSH/Mobile?style=flat&label=Forks&color=F39044&labelColor=1a1a1a" />
+  <img src="https://img.shields.io/github/v/release/Termix-SSH/Mobile?style=flat&label=Release&color=F39044&labelColor=1a1a1a" />
+  <a href="https://discord.gg/jVQGdvHDrf"><img alt="Discord" src="https://img.shields.io/discord/1347374268253470720?color=F39044&labelColor=1a1a1a" /></a>
+</p>
+
+</div>
+
+<br />
+
+## Overview
 
 Full remote SSH control of your servers with Termix, the ultimate SSH server management tool. It connects to your existing Termix server to provide you with SSH server access.
 
-# Planned Features
+<br />
 
-See [Projects](https://github.com/orgs/Termix-SSH/projects/2) for all planned features. If you are looking to contribute, see [Contributing](https://github.com/Termix-SSH/Mobile/blob/main/CONTRIBUTING.md).
+## Features
 
-# Features
+<table>
+<tr>
+<td width="50%" valign="top">
 
-- **SSH Terminal** - SSH terminal with multi-session support. Switch between two keyboard modes: the system keyboard and a custom terminal keyboard that is optimized for terminal use. The custom keyboard is completely configurable to your preferences. Has support for background-keepalive, VoiceOver, dication, Bluetooth/physical keyboards, emojis, etc.
-- **SSH File Manager** - View, edit, modify, and move files and folders via SSH.
-- **SSH Server Stats** - Get information on a servers status such as CPU, RAM, HDD, etc. 
-- **SSH Tunnels** - Start, stop, and manage SSH tunnels.
-- **Server Configuration** - Easily connect to your existing Termix server via IP/domain. It has support for reverse proxy access login pages, logging in with OIDC, and, of course, regular username/password logins.
+**SSH Terminal:**
+SSH terminal with multi-session support. Switch between two keyboard modes: the system keyboard and a custom terminal keyboard optimized for terminal use. The custom keyboard is completely configurable. Has support for background-keepalive, VoiceOver, dictation, Bluetooth/physical keyboards, emojis, etc.
 
-# Installation
+</td>
+<td width="50%" valign="top">
+
+**SSH File Manager:**
+View, edit, modify, and move files and folders via SSH.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+**SSH Server Stats:**
+Get information on a server's status such as CPU, RAM, disk usage, and more.
+
+</td>
+<td width="50%" valign="top">
+
+**SSH Tunnels:**
+Start, stop, and manage SSH tunnels directly from your mobile device.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+**Server Configuration:**
+Easily connect to your existing Termix server via IP/domain. Supports reverse proxy access login pages, OIDC login, and standard username/password logins.
+
+</td>
+</tr>
+</table>
+
+<br />
+
+## Installation
 
 Termix Mobile is available for both [Android](https://docs.termix.site/install/connector/android) and [iOS](https://docs.termix.site/install/connector/ios) platforms.
 
-# Sponsors
+<br />
 
-<p align="left">
-  <a href="https://www.digitalocean.com/">
-    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" height="50" alt="DigitalOcean">
-  </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://crowdin.com/">
-    <img src="https://support.crowdin.com/assets/logos/core-logo/svg/crowdin-core-logo-cDark.svg" height="50" alt="Crowdin">
-  </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://www.blacksmith.sh/">
-    <img src="https://cdn.prod.website-files.com/681bfb0c9a4601bc6e288ec4/683ca9e2c5186757092611b8_e8cb22127df4da0811c4120a523722d2_logo-backsmith-wordmark-light.svg" height="50" alt="Blacksmith">
-  </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://www.cloudflare.com/">
-    <img src="https://sirv.sirv.com/website/screenshots/cloudflare/cloudflare-logo.png?w=300" height="50" alt="Crowdflare">
-  </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://tailscale.com/">
-    <img src="https://drive.google.com/uc?export=view&id=1lIxkJuX6M23bW-2FElhT0rQieTrzaVSL" height="50" alt="TailScale">
-  </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://akamai.com/">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Akamai_logo.svg" height="50" alt="Akamai">
-  </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://aws.amazon.com/">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/960px-Amazon_Web_Services_Logo.svg.png" height="50" alt="AWS">
-  </a>
-</p>
+## Screenshots
 
-# Support
+<div align="center">
 
-If you need help or want to request a feature with Termix Mobile, visit the [Issues](https://github.com/Termix-SSH/Support/issues) page, log in, and press `New Issue`.
-Please be as detailed as possible in your issue, preferably written in English. You can also join the [Discord](https://discord.gg/jVQGdvHDrf) server and visit the support
-channel, however, response times may be longer.
+<br />
 
-# Show-off
+<table>
+<tr>
+<td><img src="./repo-images/Image 1.png" alt="Termix Mobile Screenshot 1" width="160" /></td>
+<td><img src="./repo-images/Image 2.png" alt="Termix Mobile Screenshot 2" width="160" /></td>
+<td><img src="./repo-images/Image 3.png" alt="Termix Mobile Screenshot 3" width="160" /></td>
+<td><img src="./repo-images/Image 4.png" alt="Termix Mobile Screenshot 4" width="160" /></td>
+<td><img src="./repo-images/Image 5.png" alt="Termix Mobile Screenshot 5" width="160" /></td>
+</tr>
+</table>
 
-<p align="center">
-  <img src="./repo-images/Image 1.png" width="160" alt="Termix Demo 1"/>
-  <img src="./repo-images/Image 2.png" width="160" alt="Termix Demo 2"/>
-  <img src="./repo-images/Image 3.png" width="160" alt="Termix Demo 3"/>
-  <img src="./repo-images/Image 4.png" width="160" alt="Termix Demo 4"/>
-  <img src="./repo-images/Image 5.png" width="160" alt="Termix Demo 5"/>
-</p>
+</div>
 
-# License
+<br />
 
-Distributed under the Apache License Version 2.0. See LICENSE for more information.
+## Planned Features
+
+See [Projects](https://github.com/orgs/Termix-SSH/projects/2) for all planned features. If you are looking to contribute, see [Contributing](https://github.com/Termix-SSH/Mobile/blob/main/CONTRIBUTING.md).
+
+<br />
+
+## Sponsors
+
+<div align="center">
+
+<br />
+
+<a href="https://www.digitalocean.com/">
+  <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" height="40" alt="DigitalOcean" />
+</a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://crowdin.com/">
+  <img src="https://support.crowdin.com/assets/logos/core-logo/svg/crowdin-core-logo-cDark.svg" height="40" alt="Crowdin" />
+</a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://www.blacksmith.sh/">
+  <img src="https://cdn.prod.website-files.com/681bfb0c9a4601bc6e288ec4/683ca9e2c5186757092611b8_e8cb22127df4da0811c4120a523722d2_logo-backsmith-wordmark-light.svg" height="40" alt="Blacksmith" />
+</a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://www.cloudflare.com/">
+  <img src="https://sirv.sirv.com/website/screenshots/cloudflare/cloudflare-logo.png?w=300" height="40" alt="Cloudflare" />
+</a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://tailscale.com/">
+  <img src="https://drive.google.com/uc?export=view&id=1lIxkJuX6M23bW-2FElhT0rQieTrzaVSL" height="40" alt="Tailscale" />
+</a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://akamai.com/">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Akamai_logo.svg" height="40" alt="Akamai" />
+</a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://aws.amazon.com/">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/960px-Amazon_Web_Services_Logo.svg.png" height="40" alt="AWS" />
+</a>
+
+</div>
+
+<br />
+
+## Support
+
+If you need help or want to request a feature with Termix Mobile, visit the [Issues](https://github.com/Termix-SSH/Support/issues) page, log in, and press `New Issue`. Please be as detailed as possible in your issue, preferably written in English. You can also join the [Discord](https://discord.gg/jVQGdvHDrf) server and visit the support channel, however, response times may be longer.
+
+<br />
+
+## License
+
+Distributed under the Apache License Version 2.0. See `LICENSE` for more information.
