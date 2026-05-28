@@ -47,7 +47,7 @@ jobs:
           eas-version: latest
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Validate EAS configuration
         run: |
@@ -74,7 +74,6 @@ jobs:
 
           eas build --local \
             --non-interactive \
-            --clear-cache \
             --platform=${{ matrix.platform }} \
             --profile=$PROFILE
 
