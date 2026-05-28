@@ -24,7 +24,7 @@ on:
 jobs:
   build:
     name: build-${{ matrix.platform }}
-    runs-on: ${{ matrix.platform == 'ios' && 'macos-26' || 'self-hosted' }}
+    runs-on: ${{ matrix.platform == 'ios' && 'blacksmith-6vcpu-macos-latest' || 'blacksmith-8vcpu-ubuntu-2404' }}
     strategy:
       matrix:
         platform: ${{ github.event.inputs.platform == 'both' && fromJSON('["ios", "android"]') || fromJSON(format('["{0}"]', github.event.inputs.platform)) }}
