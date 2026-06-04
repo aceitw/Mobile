@@ -84,6 +84,8 @@ export class NativeWebSocketManager {
   private serverSessionId: string | null = null;
   private pendingReattach = false;
   private awaitingAuthCredentials = false;
+  // True when the remote app has enabled mouse tracking (tmux, vim, htop, etc.).
+  private mouseModeActive = false;
 
   constructor(config: NativeWSConfig) {
     this.config = config;
@@ -163,6 +165,24 @@ export class NativeWebSocketManager {
         this.ws.send(JSON.stringify({ type: "input", data }));
       } catch (e) {}
     }
+  }
+
+  private updateMouseMode(data: string): void {
+    if (!data) return;
+    const re = /\x1b\[\?([0-9;]+)([hl])/g;
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(data)) !== null) {
+      const modes = m[1].split(";");
+      const isEnable = m[2] === "h";
+      if (modes.some((mode) => mode === "1000" || mode === "1002" || mode === "1003")) {
+        this.mouseModeActive = isEnable;
+      }
+    }
+  }
+
+  /** True when the remote app has mouse reporting enabled. */
+  isMouseModeActive(): boolean {
+    return this.mouseModeActive;
   }
 
   sendResize(cols: number, rows: number): void {
@@ -416,6 +436,7 @@ export class NativeWebSocketManager {
         const msg = JSON.parse(event.data as string);
 
         if (msg.type === "data") {
+          this.updateMouseMode(msg.data as string);
           this.config.onData(msg.data as string);
           this.config.onStateChange("dataReceived", {
             hostName: this.config.hostConfig.name,

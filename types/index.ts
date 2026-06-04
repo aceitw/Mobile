@@ -399,6 +399,12 @@ export interface TerminalConfig {
   autoMosh: boolean;
   moshCommand: string;
   sudoPasswordAutoFill: boolean;
+  /**
+   * When enabled, a short tap inside the terminal is translated to an SGR mouse
+   * click at that cell and sent to the remote shell (e.g. switch tmux tabs,
+   * pick fzf entries). Only fires when the remote app has mouse mode on.
+   */
+  tapToClick: boolean;
 }
 
 // ============================================================================
