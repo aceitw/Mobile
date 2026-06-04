@@ -1212,6 +1212,16 @@ export default function Sessions() {
                 activeRef?.current?.isDialogOpen?.() || false;
               const isCurrentlySelecting =
                 activeRef?.current?.isSelecting?.() || false;
+              const isMouseReporting =
+                activeRef?.current?.isMouseReporting?.() || false;
+
+              // When mouse reporting is active a tap on the WebView is
+              // intentional TUI interaction — refocus immediately so the
+              // keyboard never visually moves.
+              if (isMouseReporting && !keyboardIntentionallyHiddenRef.current && !isCustomKeyboardVisible) {
+                hiddenInputRef.current?.focus();
+                return;
+              }
 
               if (
                 !keyboardIntentionallyHiddenRef.current &&

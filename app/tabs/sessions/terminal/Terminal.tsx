@@ -88,6 +88,7 @@ export type TerminalHandle = {
   notifyForegrounded: () => void;
   scrollToBottom: () => void;
   isSelecting: () => boolean;
+  isMouseReporting: () => boolean;
 };
 
 const TerminalComponent = forwardRef<TerminalHandle, TerminalProps>(
@@ -1069,6 +1070,9 @@ const TerminalComponent = forwardRef<TerminalHandle, TerminalProps>(
         },
         isSelecting: () => {
           return isSelecting;
+        },
+        isMouseReporting: () => {
+          return wsManagerRef.current?.isMouseModeActive() ?? false;
         },
       }),
       [totpRequired, showAuthDialog, hostKeyVerification, isSelecting],
