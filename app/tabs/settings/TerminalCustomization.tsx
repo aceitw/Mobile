@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import { View, ScrollView, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { ArrowLeft, Type, AlignLeft, Rows3 } from "lucide-react-native";
+import {
+  ArrowLeft,
+  Type,
+  AlignLeft,
+  Rows3,
+  MousePointerClick,
+} from "lucide-react-native";
 import { useTerminalCustomization } from "@/app/contexts/TerminalCustomizationContext";
 import { toast } from "@/app/utils/toast";
 import { TERMINAL_FONTS } from "@/constants/terminal-themes";
-import { Text, Button, Input, Dialog } from "@/app/components/ui";
+import { Text, Button, Input, Dialog, FakeSwitch } from "@/app/components/ui";
 import { useThemeColor } from "@/app/contexts/ThemeContext";
 
 const FONT_SIZE_OPTIONS = [
@@ -39,6 +45,7 @@ export default function TerminalCustomization() {
   const color = useThemeColor();
   const {
     config,
+    updateConfig,
     updateFontFamily,
     updateFontSize,
     updateLetterSpacing,
@@ -348,6 +355,43 @@ export default function TerminalCustomization() {
                 );
               })}
             </View>
+          </View>
+        </View>
+
+        {/* Behavior */}
+        <View className="border border-border bg-card">
+          <View className="flex-row items-center gap-2 border-b border-border px-3 py-3">
+            <MousePointerClick size={14} color={color("muted-foreground")} />
+            <Text
+              weight="bold"
+              className="text-[11px] uppercase tracking-[2px] text-foreground"
+            >
+              Behavior
+            </Text>
+          </View>
+          <View className="flex-row items-center justify-between px-3 py-3">
+            <View className="flex-1 pr-3">
+              <Text weight="medium" className="text-sm text-foreground">
+                Tap to Click
+              </Text>
+              <Text className="mt-0.5 text-[11px] text-muted-foreground">
+                Send a tap as a mouse click to the remote shell. Only active
+                when the remote app enables mouse mode.
+              </Text>
+            </View>
+            <FakeSwitch
+              checked={!!config.tapToClick}
+              onChange={async (next) => {
+                try {
+                  await updateConfig({ tapToClick: next });
+                  toast.success(
+                    next ? "Tap to click enabled" : "Tap to click disabled",
+                  );
+                } catch {
+                  toast.error("Failed to update setting");
+                }
+              }}
+            />
           </View>
         </View>
 
