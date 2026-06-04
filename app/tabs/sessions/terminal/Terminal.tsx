@@ -38,6 +38,18 @@ import {
 import { loadXtermAssets } from "./loadXtermAssets";
 import { useConnectionLog, ConnectionLog } from "../_shared/useConnectionLog";
 
+/** SGR mouse report: ESC [ < button ; col ; row M/m (press/release). */
+type MouseEventKind = "press" | "release";
+function encodeMouseReport(
+  button: number,
+  col: number,
+  row: number,
+  kind: MouseEventKind,
+): string {
+  const final = kind === "press" ? "M" : "m";
+  return `\x1b[<${button};${col};${row}${final}`;
+}
+
 interface TerminalProps {
   hostConfig: {
     id: number;
@@ -366,6 +378,8 @@ const TerminalComponent = forwardRef<TerminalHandle, TerminalProps>(
 
     const baseFontSize = ${baseFontSize};
 
+    const TAP_TO_CLICK_ENABLED = ${terminalConfig.tapToClick ? "true" : "false"};
+
     const terminal = new Terminal({
       cursorBlink: ${terminalConfig.cursorBlink || false},
       cursorStyle: '${terminalConfig.cursorStyle || "bar"}',
@@ -593,13 +607,21 @@ const TerminalComponent = forwardRef<TerminalHandle, TerminalProps>(
       }
     }, { passive: true });
 
-    terminalElement.addEventListener('touchend', () => {
+    terminalElement.addEventListener('touchend', (e) => {
       if (longPressTimeout) {
         clearTimeout(longPressTimeout);
         longPressTimeout = null;
       }
 
       const touchDuration = Date.now() - touchStartTime;
+
+      let endX = touchStartX;
+      let endY = touchStartY;
+      if (e.changedTouches && e.changedTouches.length > 0) {
+        endX = e.changedTouches[0].clientX;
+        endY = e.changedTouches[0].clientY;
+      }
+      const wasShortTap = touchDuration < 350 && !hasMoved;
 
       setTimeout(() => {
         const selection = terminal.getSelection();
@@ -613,6 +635,21 @@ const TerminalComponent = forwardRef<TerminalHandle, TerminalProps>(
           }
         } else if (!isCurrentlySelecting && (touchDuration < 350 || hasMoved)) {
           lastInteractionTime = Date.now();
+          if (wasShortTap && TAP_TO_CLICK_ENABLED) {
+            const rect = terminalElement.getBoundingClientRect();
+            const cols = terminal.cols || 80;
+            const rows = terminal.rows || 24;
+            const cellW = rect.width / cols;
+            const cellH = rect.height / rows;
+            let col = Math.floor((endX - rect.left) / cellW) + 1;
+            let row = Math.floor((endY - rect.top) / cellH) + 1;
+            col = Math.max(1, Math.min(cols, col));
+            row = Math.max(1, Math.min(rows, row));
+            window.ReactNativeWebView.postMessage(JSON.stringify({
+              type: 'mouseClick',
+              data: { col: col, row: row }
+            }));
+          }
           checkIfDoneSelecting();
         }
       }, 100);
@@ -850,6 +887,17 @@ const TerminalComponent = forwardRef<TerminalHandle, TerminalProps>(
           case "scrollState":
             setShowScrollToBottomButton(!message.data.isAtBottom);
             break;
+
+          case "mouseClick": {
+            if (wsManagerRef.current?.isMouseModeActive()) {
+              const { col, row } = message.data;
+              const LEFT_BUTTON = 0;
+              const press = encodeMouseReport(LEFT_BUTTON, col, row, "press");
+              const release = encodeMouseReport(LEFT_BUTTON, col, row, "release");
+              wsManagerRef.current.sendInput(press + release);
+            }
+            break;
+          }
         }
       } catch (error) {
         console.error("[Terminal] Error parsing WebView message:", error);
