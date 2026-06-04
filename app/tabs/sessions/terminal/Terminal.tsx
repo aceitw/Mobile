@@ -649,6 +649,7 @@ const TerminalComponent = forwardRef<TerminalHandle, TerminalProps>(
               type: 'mouseClick',
               data: { col: col, row: row }
             }));
+            return;
           }
           checkIfDoneSelecting();
         }
