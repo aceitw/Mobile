@@ -11,6 +11,7 @@
   <img src="https://img.shields.io/github/forks/Termix-SSH/Mobile?style=flat&label=Forks&color=F39044&labelColor=1a1a1a" />
   <img src="https://img.shields.io/github/v/release/Termix-SSH/Mobile?style=flat&label=Release&color=F39044&labelColor=1a1a1a" />
   <a href="https://discord.gg/jVQGdvHDrf"><img alt="Discord" src="https://img.shields.io/discord/1347374268253470720?color=F39044&labelColor=1a1a1a" /></a>
+  <a href="https://donate.termix.site/"><img alt="Donate" src="https://img.shields.io/badge/Donate-Support%20Termix-F39044?style=flat&labelColor=1a1a1a" /></a>
 </p>
 
 </div>
