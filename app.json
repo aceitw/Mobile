@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "TermixD",
-    "slug": "termix",
+    "slug": "termixd",
     "version": "1.4.0",
     "orientation": "default",
     "icon": "./assets/images/icon.png",
@@ -30,7 +30,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#0c0d0b"
-      }
+      },
+      "permissions": [
+        "android.permission.USE_BIOMETRIC",
+        "android.permission.USE_FINGERPRINT"
+      ]
     },
     "web": {
       "output": "static",
@@ -86,12 +90,12 @@
         "origin": false
       },
       "eas": {
-        "projectId": "cf86f530-ca4b-44bf-bb68-4d178b264910"
+        "projectId": "e8735b80-66f8-4f10-a1bb-a97306f3f1ec"
       }
     },
     "assetBundlePatterns": [
       "assets/**/*"
     ],
-    "owner": "termix"
+    "owner": "aceitw"
   }
 }
