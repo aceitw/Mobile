@@ -60,6 +60,8 @@ export interface NativeWSConfig {
   onSessionIdChange?: (sessionId: string | null) => void;
   /** Fired for each `connection_log` WS message from the server. */
   onConnectionLog?: (entry: { level?: string; stage?: string; message: string }) => void;
+  /** Fired when the remote app enables or disables mouse reporting. */
+  onMouseModeChange?: (active: boolean) => void;
 }
 
 export class NativeWebSocketManager {
@@ -175,7 +177,10 @@ export class NativeWebSocketManager {
       const modes = m[1].split(";");
       const isEnable = m[2] === "h";
       if (modes.some((mode) => mode === "1000" || mode === "1002" || mode === "1003")) {
-        this.mouseModeActive = isEnable;
+        if (this.mouseModeActive !== isEnable) {
+          this.mouseModeActive = isEnable;
+          this.config.onMouseModeChange?.(isEnable);
+        }
       }
     }
   }

@@ -352,6 +352,15 @@ const TerminalComponent = forwardRef<TerminalHandle, TerminalProps>(
       -moz-user-select: text;
     }
 
+    .mouse-reporting-active .xterm-viewport {
+      -webkit-overflow-scrolling: auto;
+    }
+    .mouse-reporting-active, .mouse-reporting-active * {
+      user-select: none !important;
+      -webkit-user-select: none !important;
+      touch-action: none;
+    }
+
     input, textarea, [contenteditable], .xterm-helper-textarea {
       position: absolute !important;
       left: -9999px !important;
@@ -521,6 +530,10 @@ const TerminalComponent = forwardRef<TerminalHandle, TerminalProps>(
         terminal.reset();
         terminal.write('\\x1b[2J\\x1b[H\\x1b[?25h');
       }
+    };
+
+    window.setMouseReportingActive = function(active) {
+      document.body.classList.toggle('mouse-reporting-active', active);
     };
 
     const terminalElement = document.getElementById('terminal');
@@ -996,6 +1009,11 @@ const TerminalComponent = forwardRef<TerminalHandle, TerminalProps>(
           handleConnectionFailure(message);
         },
         onConnectionLog: (entry) => log.ingest([entry]),
+        onMouseModeChange: (active) => {
+          webViewRef.current?.injectJavaScript(
+            `window.setMouseReportingActive(${active}); true;`,
+          );
+        },
       });
 
       log.clear();
