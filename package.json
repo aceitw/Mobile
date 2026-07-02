@@ -14,7 +14,10 @@
     "verify:android-network-security": "node scripts/verify-android-network-security.cjs",
     "build-all": "eas build --platform all --profile development",
     "build-android": "eas build --platform android --profile development",
-    "build-ios": "eas build --platform ios --profile development"
+    "build-ios": "eas build --platform ios --profile development",
+    "build:ios:prod": "EAS_SKIP_AUTO_FINGERPRINT=1 eas build --platform ios --profile production --auto-submit --non-interactive",
+    "build:android:prod": "EAS_SKIP_AUTO_FINGERPRINT=1 eas build --platform android --profile production --auto-submit --non-interactive",
+    "build:all:prod": "EAS_SKIP_AUTO_FINGERPRINT=1 eas build --platform all --profile production --auto-submit --non-interactive"
   },
   "dependencies": {
     "@expo-google-fonts/jetbrains-mono": "^0.4.1",
